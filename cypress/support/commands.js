@@ -23,3 +23,30 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+
+Cypress.Commands.add('buscarTodosUsuarios', () => {
+    cy.request({
+            
+        url: `https://reqres.in/api/users?page=2`,
+        method: 'GET',
+        failOnStatusCode: false
+
+    })
+    .then((response) => {
+        return response
+    })
+})
+
+Cypress.Commands.add('buscarUsuarioEspecifico', (id) => {
+    cy.request({
+            
+        url: `https://reqres.in/api/users/${id}`,
+        method: 'GET',
+        failOnStatusCode: false
+
+    })
+    .then((response) => {
+        return response
+    })
+})
